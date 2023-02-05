@@ -33,7 +33,7 @@ public class AIinterview extends JFrame {
 	public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	public LocalDate now = LocalDate.now();
 	public String formatedNow = now.format(formatter);
-	public int dayOfWeekValue = now.getDayOfWeek().getValue();
+	public int dayOfWeekValue = now.getDayOfWeek().getValue()%7; //arraybound exception -> %7 추가
 
 	public AIinterview(int width, int height) {
 		setTitle("AI면접실");
@@ -49,6 +49,8 @@ public class AIinterview extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setLayout(null); // 절대좌표 사용하기 위해 레이아웃 null
+		
+		System.out.println(dayOfWeekValue);
 
 		addButton(); // 버튼 삽입
 		addLabel(); // 라벨 삽입
@@ -72,7 +74,7 @@ public class AIinterview extends JFrame {
 		// 오늘부터 일주일 뒤 까지 해당 날짜 버튼 색 변경
 		for (int i = dayOfWeekValue; i < dayOfWeekValue + 7; i++) {
 			btnArray[i].setBackground(Color.PINK);
-			btnArray[i].addActionListener(new MyActionListener(i)); //버튼 액션 리스터에 i를 주면 안됨. 첫 색칠블럭은 0, 두번째 색칠블럭은 1. 이렇게 줘야됨.
+			btnArray[i].addActionListener(new AIinterviewActionListener(i)); //버튼 액션 리스터에 i를 주면 안됨. 첫 색칠블럭은 0, 두번째 색칠블럭은 1. 이렇게 줘야됨.
 		}
 		
 	}

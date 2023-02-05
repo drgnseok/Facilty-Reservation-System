@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 //버튼 이벤트 처리를 위한 클래스
-public class MyActionListener implements ActionListener {
+public class AIinterviewActionListener implements ActionListener {
 
 	private int n; //오늘 날짜+n 으로 해당 날짜 표시
 	
 	//생성자
-	MyActionListener(int n){
+	AIinterviewActionListener(int n){
 		this.n=n;
 	}
 	
