@@ -74,7 +74,7 @@ public class AIinterview extends JFrame {
 		// 오늘부터 일주일 뒤 까지 해당 날짜 버튼 색 변경
 		for (int i = dayOfWeekValue; i < dayOfWeekValue + 7; i++) {
 			btnArray[i].setBackground(Color.PINK);
-			btnArray[i].addActionListener(new AIinterviewActionListener(i)); //버튼 액션 리스터에 i를 주면 안됨. 첫 색칠블럭은 0, 두번째 색칠블럭은 1. 이렇게 줘야됨.
+			btnArray[i].addActionListener(new AIinterviewActionListener(i));
 		}
 		
 	}
@@ -123,9 +123,9 @@ public class AIinterview extends JFrame {
 		setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
 	}
 
-	public static void main(String[] args) {
-		new AIinterview(1000, 560);
-	}
+	/*
+	 * public static void main(String[] args) { new AIinterview(1000, 560); }
+	 */
 
 }
 

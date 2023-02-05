@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class MainPage extends JFrame{
 	private Dimension frameSize, screenSize;
 	private MyPanel panel = new MyPanel();
@@ -63,6 +66,13 @@ public class MainPage extends JFrame{
 		this.add(btn5);
 		this.add(btn6);
 		this.add(btn7);
+		
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AIinterview(width, height);
+				setVisible(false);
+			}
+		});
 	}
 	
 	//이미지를 배경으로 넣는 패널
