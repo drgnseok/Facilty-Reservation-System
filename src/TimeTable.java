@@ -37,6 +37,11 @@ public class TimeTable extends JFrame {
 	
 	private RoundedButton saveBtn;
 	
+	
+	//DataBase DB = new DataBase();
+
+	
+	
 	// 생성자. n은 해당 날짜를 나타내기 위해 추가.(now + n)
 	public TimeTable(int width, int height, int n) {
 		
@@ -123,11 +128,11 @@ public class TimeTable extends JFrame {
 		//텍스트필드 setting
 		for(int i=0; i<8; i++) {
 			if(i%2 == 0){
-				TF[i] = new JTextField("학번",8);
+				TF[i] = new JTextField(8);
 				TFStartX = 80;
 			}
 			else{
-				TF[i] = new JTextField("이름",10);	
+				TF[i] = new JTextField(10);	
 				TFStartX = 160;
 			}
 			
@@ -155,7 +160,7 @@ public class TimeTable extends JFrame {
 					}
 					
 					//DB. 이 안되는디
-					DB.setAIinterview(dayGap,i/2,text);
+					Main.DB.setAIinterview(dayGap,i/2,text);
 				}
 			}
 		});

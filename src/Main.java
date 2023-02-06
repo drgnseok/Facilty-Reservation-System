@@ -1,7 +1,7 @@
 
 public class Main {
 	
-	DataBase DB = new DataBase();
+	static DataBase DB = new DataBase();
 	
 	public static void main(String[] args) {
 		int width = 1000;
