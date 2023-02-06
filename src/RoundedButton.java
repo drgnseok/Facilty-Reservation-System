@@ -8,7 +8,7 @@ import java.awt.RenderingHints;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-//테두리 둥근 버튼
+//테두리 둥근 버튼. JButton 대신 RoundedButton 사용
 public class RoundedButton extends JButton {
 
 

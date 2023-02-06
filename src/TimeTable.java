@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -28,11 +30,17 @@ public class TimeTable extends JFrame {
 	private JTextField TF3_1;	private JTextField TF3_2;	
 	private JTextField TF4_1;	private JTextField TF4_2;
 	
+	private JTextField TF[] = new JTextField[8];
+	
 	private JLabel time1;		private JLabel time2;
 	private JLabel time3;		private JLabel time4;
-
+	
+	private RoundedButton saveBtn;
+	
 	// 생성자. n은 해당 날짜를 나타내기 위해 추가.(now + n)
 	public TimeTable(int width, int height, int n) {
+		
+
 		setTitle("예약페이지");
 		this.width = width;
 		this.height = height;
@@ -59,6 +67,7 @@ public class TimeTable extends JFrame {
 		addTodayLabel(n);
 		addTimeLabel();
 		addTextField();
+		addSaveButton();
 		this.repaint();
 	}
 
@@ -111,25 +120,47 @@ public class TimeTable extends JFrame {
 		int TFStartX = 80;		int TFStartY = 70;	//텍스트필드 시작 좌표
 		int TFSizeX = 70;		int TFSizeY = 30;	//텍스트필드 크기
 		
-		TF1_1 = new JTextField("학번",8);		TF1_2 = new JTextField("이름",12);
-		TF2_1 = new JTextField("학번",8);		TF2_2 = new JTextField("이름",12);
-		TF3_1 = new JTextField("학번",8);		TF3_2 = new JTextField("이름",12);
-		TF4_1 = new JTextField("학번",8);		TF4_2 = new JTextField("이름",12);
+		//텍스트필드 setting
+		for(int i=0; i<8; i++) {
+			if(i%2 == 0){
+				TF[i] = new JTextField("학번",8);
+				TFStartX = 80;
+			}
+			else{
+				TF[i] = new JTextField("이름",10);	
+				TFStartX = 160;
+			}
+			
+			TF[i].setFont(new Font("고딕체",Font.PLAIN,8));
+			TF[i].setBounds(TFStartX,TFStartY+(i/2*40),TFSizeX,TFSizeY);
+			
+			panel.add(TF[i]);
+		}
 		
-		TF1_1.setFont(new Font("고딕체",Font.PLAIN,8));		TF1_2.setFont(new Font("고딕체",Font.PLAIN,8));
-		TF2_1.setFont(new Font("고딕체",Font.PLAIN,8));		TF2_2.setFont(new Font("고딕체",Font.PLAIN,8));
-		TF3_1.setFont(new Font("고딕체",Font.PLAIN,8));		TF3_2.setFont(new Font("고딕체",Font.PLAIN,8));
-		TF4_1.setFont(new Font("고딕체",Font.PLAIN,8));		TF4_2.setFont(new Font("고딕체",Font.PLAIN,8));
+	}
+	
+	public void addSaveButton() {
+		saveBtn = new RoundedButton("저장");
+		saveBtn.setFont(new Font("고딕체",Font.BOLD,10));
+		saveBtn.setBackground(Color.WHITE);
+		saveBtn.setHorizontalAlignment(JButton.CENTER);
+		saveBtn.setBounds(160,270,70,25);
 		
-		TF1_1.setBounds(TFStartX,TFStartY,TFSizeX,TFSizeY);			TF1_2.setBounds(TFStartX+80,TFStartY,TFSizeX,TFSizeY);
-		TF2_1.setBounds(TFStartX,TFStartY+40,TFSizeX,TFSizeY);		TF2_2.setBounds(TFStartX+80,TFStartY+40,TFSizeX,TFSizeY);
-		TF3_1.setBounds(TFStartX,TFStartY+80,TFSizeX,TFSizeY);		TF3_2.setBounds(TFStartX+80,TFStartY+80,TFSizeX,TFSizeY);
-		TF4_1.setBounds(TFStartX,TFStartY+120,TFSizeX,TFSizeY);		TF4_2.setBounds(TFStartX+80,TFStartY+120,TFSizeX,TFSizeY);
+		saveBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = null;
+				for(int i=0; i<8; i++) {
+					if(i%2==0 && i<=6) {
+						text = TF[i].getText() + TF[i+1].getText();
+					}
+					
+					//DB. 이 안되는디
+					DB.setAIinterview(dayGap,i/2,text);
+				}
+			}
+		});
 		
-		panel.add(TF1_1);		panel.add(TF1_2);
-		panel.add(TF2_1);		panel.add(TF2_2);
-		panel.add(TF3_1);		panel.add(TF3_2);
-		panel.add(TF4_1);		panel.add(TF4_2);
+		panel.add(saveBtn);		
 	}
 
 	// 창 화면 중앙에 위치
