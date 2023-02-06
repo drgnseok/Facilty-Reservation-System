@@ -17,13 +17,13 @@ public class MainPage extends JFrame{
 	private MyPanel panel = new MyPanel();
 	int width, height; //창 너비, 높이
 	
-	private JButton btn1 = new JButton("• 크리에이티브 스튜디오");
-	private JButton btn2 = new JButton("• 모션 트래킹 스튜디오");
-	private JButton btn3 = new JButton("• C&C 스튜디오");
-	private JButton btn4 = new JButton("• 소모임실");
-	private JButton btn5 = new JButton("• AI&빅데이터 실습실");
-	private JButton btn6 = new JButton("• 세미나실");
-	private JButton btn7 = new JButton("• AI 면접실");
+	private RoundedButton btn1 = new RoundedButton("• 크리에이티브 스튜디오");
+	private RoundedButton btn2 = new RoundedButton("• 모션 트래킹 스튜디오");
+	private RoundedButton btn3 = new RoundedButton("• C&C 스튜디오");
+	private RoundedButton btn4 = new RoundedButton("• 소모임실");
+	private RoundedButton btn5 = new RoundedButton("• AI&빅데이터 실습실");
+	private RoundedButton btn6 = new RoundedButton("• 세미나실");
+	private RoundedButton btn7 = new RoundedButton("• AI 면접실");
 	
 	//생성자
 	public MainPage(int width, int height) {
@@ -51,12 +51,12 @@ public class MainPage extends JFrame{
 		btn6.setFont(new Font("맑은 고딕", Font.PLAIN, 9));
 		btn7.setFont(new Font("맑은 고딕", Font.PLAIN, 9));
 
-		btn1.setBounds(120,341,150,30);
+		btn1.setBounds(120,340,150,30);
 		btn2.setBounds(120,392,150,30);
 		btn3.setBounds(120,443,150,30);
-		btn4.setBounds(420,365,150,30);
+		btn4.setBounds(420,364,150,30);
 		btn5.setBounds(420,418,150,30);
-		btn6.setBounds(730,365,150,30);
+		btn6.setBounds(730,364,150,30);
 		btn7.setBounds(730,418,150,30);
 		
 		this.add(btn1);

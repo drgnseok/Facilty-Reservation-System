@@ -25,7 +25,7 @@ public class AIinterview extends JFrame {
 
 	private JPanel panel = new JPanel();
 
-	private JButton btnArray[] = new JButton[14];
+	private RoundedButton btnArray[] = new RoundedButton[14];
 	private int btnStartX = 250;
 	private int btnStartY = 400;
 	private int btnWidth = 70;
@@ -76,7 +76,7 @@ public class AIinterview extends JFrame {
 
 		// 버튼 생성
 		for (int i = 0; i < 14; i++) {
-			btnArray[i] = new JButton();
+			btnArray[i] = new RoundedButton();
 			if (i > 6)
 				btnStartY = 400+btnHeight+3; // 두번째 줄 y값
 			btnArray[i].setBounds(btnStartX + ((btnWidth+3) * (i % 7)), btnStartY, btnWidth, btnHeight); // 버튼 위치, 크기 설정
@@ -113,13 +113,13 @@ public class AIinterview extends JFrame {
 		todayLabel.setHorizontalAlignment(JLabel.CENTER);
 		panel.add(todayLabel);	
 
-		// 요일 라벨
+		//요일 라벨
 		for (int i = 0; i < 7; i++) {
 			dayLabel[i] = new JLabel(dayString[i]);
 			dayLabel[i].setOpaque(true);
 			dayLabel[i].setBounds(btnStartX + ((btnWidth+3) * i), btnStartY-70, btnWidth, btnHeight);
 			dayLabel[i].setBackground(Color.LIGHT_GRAY);
-			dayLabel[i].setFont(new Font("맑은 고딕",Font.BOLD,20));
+			dayLabel[i].setFont(new Font("맑은 고딕",Font.PLAIN,15));
 			if (i == 0)	dayLabel[i].setBackground(Color.RED);
 			if (i == 6)	dayLabel[i].setBackground(Color.BLUE);
 			dayLabel[i].setHorizontalAlignment(JLabel.CENTER);
