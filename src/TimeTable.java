@@ -38,6 +38,8 @@ public class TimeTable extends JFrame {
 		this.height = height;
 		
 		Calendar cal = Calendar.getInstance();
+		
+		if(dayOfWeekValue == 7)	dayOfWeekValue = 0;
 		this.dayGap = n-dayOfWeekValue;
 		
 		//해당 날짜 초기화

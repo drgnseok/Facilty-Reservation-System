@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 //버튼 이벤트 처리를 위한 클래스
+//없애고 클래스에 하나하나 추가할 예정
 public class AIinterviewActionListener implements ActionListener {
 
 	private int n; //오늘 날짜+n 으로 해당 날짜 표시
