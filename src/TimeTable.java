@@ -38,10 +38,6 @@ public class TimeTable extends JFrame {
 	private RoundedButton saveBtn;
 	
 	
-	//DataBase DB = new DataBase();
-
-	
-	
 	// 생성자. n은 해당 날짜를 나타내기 위해 추가.(now + n)
 	public TimeTable(int width, int height, int n) {
 		
@@ -175,7 +171,4 @@ public class TimeTable extends JFrame {
 		setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
 	}
 
-	/*
-	 * public static void main(String[] args) { new TimeTable(200, 350, 0); }
-	 */
 }
