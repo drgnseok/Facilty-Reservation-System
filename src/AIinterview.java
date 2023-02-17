@@ -32,6 +32,7 @@ public class AIinterview extends JFrame {
 	private int btnStartY = 400;
 	private int btnWidth = 70;
 	private int btnHeight = 25;
+	private RoundedButton btnBack = new RoundedButton();
 
 	private JLabel roomLabel;
 	private JLabel todayLabel;
@@ -75,7 +76,6 @@ public class AIinterview extends JFrame {
 
 	// 버튼 삽입
 	public void addButton() {
-
 		// 버튼 생성
 		for (int i = 0; i < 14; i++) {
 			btnArray[i] = new RoundedButton();
@@ -89,10 +89,32 @@ public class AIinterview extends JFrame {
 
 		// 오늘부터 일주일 뒤 까지 해당 날짜 버튼 색 변경
 		for (int i = dayOfWeekValue; i < dayOfWeekValue + 7; i++) {
-			btnArray[i].setBackground(Color.PINK);
-			btnArray[i].setText(Integer.toString(Integer.parseInt(day) + i - dayOfWeekValue));
+			
+			int date = Integer.parseInt(day) + i - dayOfWeekValue; //표시될 날짜
+			int maxDate = cal.getActualMaximum(Calendar.DATE); //해당 월의 최대 일
+			
+			btnArray[i].setBackground(Color.PINK); //버튼 색 변경
+			btnArray[i].setText(Integer.toString(date)); //7일 뒤까지 날짜 표기
+			
+			//31일 다음에 32일 표기되는 것 방지
+			if(Integer.parseInt(btnArray[i].getText()) > maxDate) {
+				btnArray[i].setText(Integer.toString(date - maxDate));
+			}
+			
 			btnArray[i].addActionListener(new AIinterviewActionListener(i));
 		}
+		
+		//뒤로가기 버튼
+		btnBack.setText("뒤로가기");
+		btnBack.setBounds(850,btnStartY,btnWidth, btnHeight);		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main.mainPage.setVisible(true);
+				setVisible(false);
+			}
+		});
+		
+		panel.add(btnBack);
 	}
 
 	// 라벨 삽입

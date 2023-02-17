@@ -155,7 +155,6 @@ public class TimeTable extends JFrame {
 						text = TF[i].getText() + TF[i+1].getText();
 					}
 					
-					//DB. 이 안되는디
 					Main.DB.setAIinterview(dayGap,i/2,text);
 				}
 			}
