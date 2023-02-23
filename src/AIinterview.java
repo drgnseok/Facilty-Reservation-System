@@ -30,18 +30,18 @@ public class AIinterview extends JFrame {
 	private JPanel panel = new JPanel();
 
 	private RoundedButton btnArray[] = new RoundedButton[14];
-	private int btnStartX = 250;
-	private int btnStartY = 400;
-	private int btnWidth = 70;
-	private int btnHeight = 25;
+	protected int btnStartX = 250;
+	protected int btnStartY = 400;
+	protected int btnWidth = 70;
+	protected int btnHeight = 25;
 	private RoundedButton btnBack = new RoundedButton();
 
-	private JLabel roomLabel;
+	protected JLabel roomLabel;
 	// private JLabel jSpace;
 	// private JLabel jStudio;
-	private JLabel todayLabel;
-	private JLabel dayLabel[] = new JLabel[7];
-	private String dayString[] = { "일", "월", "화", "수", "목", "금", "토" };
+	protected JLabel todayLabel;
+	protected JLabel dayLabel[] = new JLabel[7];
+	protected String dayString[] = { "일", "월", "화", "수", "목", "금", "토" };
 	public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 	public LocalDate now = LocalDate.now();
 	public String formatedNow = now.format(formatter);

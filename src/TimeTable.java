@@ -42,7 +42,6 @@ public class TimeTable extends JFrame {
 	// 생성자. n은 해당 날짜를 나타내기 위해 추가.(now + n)
 	public TimeTable(int width, int height, int n, String name) {
 		
-
 		setTitle("예약페이지");
 		this.width = width;
 		this.height = height;
