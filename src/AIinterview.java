@@ -9,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,7 +18,7 @@ public class AIinterview extends JFrame {
 	private int width;
 	private int height;
 	
-	private String name = this.getName();
+	private String name = this.getClass().getSimpleName();
 
 	private String year;
 	private String month;
@@ -67,8 +66,6 @@ public class AIinterview extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setLayout(null); // 절대좌표 사용하기 위해 레이아웃 null
-
-		System.out.println(dayOfWeekValue);
 
 		if (dayOfWeekValue == 7)
 			dayOfWeekValue = 0;
