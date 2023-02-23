@@ -22,6 +22,7 @@ public class TimeTable extends JFrame {
 	private String year;	private String month;
 	private String day;		private String today;
 	private int dayGap;
+	private String name;
 	
 	private JLabel todayLabel;
 	
@@ -39,12 +40,13 @@ public class TimeTable extends JFrame {
 	
 	
 	// 생성자. n은 해당 날짜를 나타내기 위해 추가.(now + n)
-	public TimeTable(int width, int height, int n) {
+	public TimeTable(int width, int height, int n, String name) {
 		
 
 		setTitle("예약페이지");
 		this.width = width;
 		this.height = height;
+		this.name = name; //name은 예약할 방 이름
 		
 		Calendar cal = Calendar.getInstance();
 		
@@ -155,7 +157,37 @@ public class TimeTable extends JFrame {
 						text = TF[i].getText() + TF[i+1].getText();
 					}
 					
-					Main.DB.setAIinterview(dayGap,i/2,text);
+					if(name!=null) {
+						switch(name) {
+						case "AIinterview":
+							Main.DB.setAIinterview(dayGap,i/2,text);
+							break;
+							
+						case "CreativeStudio" :
+							Main.DB.setCreativeStudio(dayGap,i/2,text);
+							break;
+							
+						case "CC_Studio" :
+							Main.DB.setCC_Studio(dayGap,i/2,text);
+							break;
+	
+						case "AI_Bigdata" :
+							Main.DB.setAI_Bigdata(dayGap,i/2,text);
+							break;
+			
+						case "MotionTracking" :
+							Main.DB.setMotionTracking(dayGap,i/2,text);
+							break;							
+							
+						case "Seminarroom" :
+							Main.DB.setSeminarroom(dayGap,i/2,text);
+							break;
+							
+						case "Smallroom" :
+							Main.DB.setSmallroom(dayGap,i/2,text);
+							break;
+						}
+					}
 				}
 			}
 		});

@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +18,8 @@ public class AIinterview extends JFrame {
 	private Dimension frameSize, screenSize;
 	private int width;
 	private int height;
+	
+	private String name = this.getName();
 
 	private String year;
 	private String month;
@@ -35,6 +38,8 @@ public class AIinterview extends JFrame {
 	private RoundedButton btnBack = new RoundedButton();
 
 	private JLabel roomLabel;
+	//private JLabel jSpace;
+	//private JLabel jStudio;
 	private JLabel todayLabel;
 	private JLabel dayLabel[] = new JLabel[7];
 	private String dayString[] = { "일", "월", "화", "수", "목", "금", "토" };
@@ -101,7 +106,7 @@ public class AIinterview extends JFrame {
 				btnArray[i].setText(Integer.toString(date - maxDate));
 			}
 			
-			btnArray[i].addActionListener(new AIinterviewActionListener(i));
+			btnArray[i].addActionListener(new MyActionListener(i,name));
 		}
 		
 		//뒤로가기 버튼
@@ -121,13 +126,44 @@ public class AIinterview extends JFrame {
 	public void addLabel() {
 
 		// 방 이름 라벨 - 상단에 위치
-		roomLabel = new JLabel("AI 면접실");
-		roomLabel.setOpaque(true);
+		roomLabel = new JLabel();
+		//roomLabel.setOpaque(true);
 		roomLabel.setBounds(45, 20, 120, 30);
-		roomLabel.setBackground(Color.LIGHT_GRAY);
+		//roomLabel.setBackground(Color.LIGHT_GRAY);
 		roomLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		roomLabel.setHorizontalAlignment(JLabel.CENTER);
 		panel.add(roomLabel);
+		
+		//공간 라벨 
+		JLabel jSpace = new JLabel("        상상관");
+		JLabel jStudio = new JLabel("❍  AI 면접실");
+				
+		//상상관 
+		panel.add(jSpace);
+		jSpace.setBounds(110, 5, 100, 100);
+		jSpace.setForeground(Color.GRAY);
+		jSpace.setFont(new Font("Serif", Font.PLAIN, 13));
+				//Calibri
+		//AI 면접실
+		panel.add(jStudio);
+		jStudio.setBounds(125, 50, 300, 70);
+		jStudio.setFont(new Font("Serif", Font.BOLD, 16));
+				
+		//상상관 옆 이미지 
+		/*JLabel imgLb3 = new JLabel();
+		ImageIcon thirdImg = new ImageIcon("img03.png"); 
+		imgLb3.setIcon(thirdImg);
+		imgLb3.setBounds(40, 30, 40, 40);
+		imgLb3.setHorizontalAlignment(JLabel.CENTER);
+		panel.add(imgLb3);*/
+		
+		//달력 이미지 
+		JLabel imgLb4 = new JLabel();
+		ImageIcon CalendarImg = new ImageIcon("images/imgCalendar.png"); 
+		imgLb4.setIcon(CalendarImg);
+		imgLb4.setBounds(345, 30, 330, 330);
+		//imgCalendar.setHorizontalAlignment(JLabel.CENTER);
+		panel.add(imgLb4);
 
 		// 오늘 날짜
 		todayLabel = new JLabel(formatedNow + " (" + dayString[dayOfWeekValue] + ")");
@@ -139,20 +175,22 @@ public class AIinterview extends JFrame {
 		panel.add(todayLabel);
 
 		// 요일 라벨
-		for (int i = 0; i < 7; i++) {
-			dayLabel[i] = new JLabel(dayString[i]);
-			dayLabel[i].setOpaque(true);
-			dayLabel[i].setBounds(btnStartX + ((btnWidth + 3) * i), btnStartY - 70, btnWidth, btnHeight);
-			dayLabel[i].setBackground(Color.LIGHT_GRAY);
-			dayLabel[i].setFont(new Font("맑은 고딕", Font.PLAIN, 15));
-			if (i == 0)
-				dayLabel[i].setBackground(Color.RED);
-			if (i == 6)
-				dayLabel[i].setBackground(Color.BLUE);
-			dayLabel[i].setHorizontalAlignment(JLabel.CENTER);
-			this.add(dayLabel[i]);
-		}
-
+		
+		  for (int i = 0; i < 7; i++) { dayLabel[i] = new JLabel(dayString[i]);
+		  dayLabel[i].setOpaque(true); dayLabel[i].setBounds(btnStartX + ((btnWidth +
+		  3) * i), btnStartY - 70, btnWidth, btnHeight);
+		  dayLabel[i].setBackground(Color.LIGHT_GRAY); dayLabel[i].setFont(new
+		  Font("맑은 고딕", Font.PLAIN, 15)); if (i == 0)
+		  dayLabel[i].setBackground(Color.RED); if (i == 6)
+		  dayLabel[i].setBackground(Color.BLUE);
+		  dayLabel[i].setHorizontalAlignment(JLabel.CENTER); this.add(dayLabel[i]); }
+		 
+		
+		/*
+		 * ImageIcon sunsatImg = new ImageIcon("images/sunsat.png");
+		 * dayLabel.setIcon(sunsatImg); dayLabel.setBounds(btnStartX,370,520,30);
+		 * panel.add(dayLabel);
+		 */
 	}
 
 	// 창 화면 중앙에 위치
