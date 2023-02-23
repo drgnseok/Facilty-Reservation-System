@@ -37,9 +37,13 @@ public class TimeTable extends JFrame {
 	
 	private RoundedButton saveBtn;
 	
+	//DB에 저장할 날짜 형식
+	private String DBdate;
+	private String place;
+	
 	
 	// 생성자. n은 해당 날짜를 나타내기 위해 추가.(now + n)
-	public TimeTable(int width, int height, int n) {
+	public TimeTable(int width, int height, int n, String place) {
 		
 
 		setTitle("예약페이지");
@@ -56,6 +60,10 @@ public class TimeTable extends JFrame {
 		this.month = Integer.toString(cal.get(Calendar.MONTH)+1);
 		this.day = Integer.toString(cal.get(Calendar.DAY_OF_MONTH)+this.dayGap);
 		this.today = this.year + "년 " + this.month + "월 " + this.day + "일 " + dayString[(dayOfWeekValue + dayGap)%7];
+		
+		//DB인자
+		DBdate = year+ "/" + month + "/" + day;
+		this.place = place;
 
 		
 		setSize(this.width, this.height); // 가로 세로 1000 560 크기 - 이미지 크기에 맞춤
@@ -140,6 +148,7 @@ public class TimeTable extends JFrame {
 		
 	}
 	
+	//저장 버튼
 	public void addSaveButton() {
 		saveBtn = new RoundedButton("저장");
 		saveBtn.setFont(new Font("고딕체",Font.BOLD,10));
@@ -156,7 +165,8 @@ public class TimeTable extends JFrame {
 					}
 					
 					//DB. 이 안되는디
-					Main.DB.setAIinterview(dayGap,i/2,text);
+					//Main.DB.setAIinterview(dayGap,i/2,text);
+					
 				}
 			}
 		});

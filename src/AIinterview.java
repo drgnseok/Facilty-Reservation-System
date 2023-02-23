@@ -17,6 +17,9 @@ public class AIinterview extends JFrame {
 	private Dimension frameSize, screenSize;
 	private int width;
 	private int height;
+	
+	//DB 인자값 변수설정
+	private String place;
 
 	private String year;
 	private String month;
@@ -42,10 +45,13 @@ public class AIinterview extends JFrame {
 	public String formatedNow = now.format(formatter);
 	public int dayOfWeekValue = now.getDayOfWeek().getValue(); // arraybound exception -> %7 추가
 
-	public AIinterview(int width, int height) {
+	public AIinterview(int width, int height, String place) {
 		setTitle("AI면접실");
 		this.width = width;
 		this.height = height;
+		
+		//DB 인자값 초기화
+		this.place = place;
 
 		this.year = Integer.toString(cal.get(Calendar.YEAR));
 		this.month = Integer.toString(cal.get(Calendar.MONTH) + 1);
@@ -91,7 +97,7 @@ public class AIinterview extends JFrame {
 		for (int i = dayOfWeekValue; i < dayOfWeekValue + 7; i++) {
 			btnArray[i].setBackground(Color.PINK);
 			btnArray[i].setText(Integer.toString(Integer.parseInt(day) + i - dayOfWeekValue));
-			btnArray[i].addActionListener(new AIinterviewActionListener(i));
+			btnArray[i].addActionListener(new AIinterviewActionListener(i, place));
 		}
 	}
 

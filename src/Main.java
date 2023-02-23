@@ -1,3 +1,4 @@
+import com.mysql.cj.MysqlConnection;
 
 public class Main {
 	
@@ -7,7 +8,8 @@ public class Main {
 		int width = 1000;
 		int height = 560; //창 가로, 세로
 
-		new MainPage(width, height);		
+		new MainPage(width, height);	
+		
 	}
 
 }

@@ -67,9 +67,11 @@ public class MainPage extends JFrame{
 		this.add(btn6);
 		this.add(btn7);
 		
+		
+		//AI면접실 버튼 이벤트 메소드
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new AIinterview(width, height);
+				new AIinterview(width, height, btn7.getText());
 				setVisible(false);
 			}
 		});
