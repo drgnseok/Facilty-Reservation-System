@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -103,7 +102,7 @@ public class MotionTracking extends JFrame {
 				btnArray[i].setText(Integer.toString(date - maxDate));
 			}
 			
-			btnArray[i].addActionListener(new AIinterviewActionListener(i, day));
+			btnArray[i].addActionListener(new MyActionListener(i, day));
 		}
 		
 		//뒤로가기 버튼
