@@ -68,6 +68,49 @@ public class MainPage extends JFrame{
 		this.add(btn7);
 		
 		
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new CreativeStudio(width, height);
+				setVisible(false);
+			}
+		});
+		
+		
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new MotionTracking(width, height);
+				setVisible(false);
+			}
+		});
+		
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new CC_Studio(width, height);
+				setVisible(false);
+			}
+		});
+		
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Smallroom(width, height);
+				setVisible(false);
+			}
+		});
+		
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new AI_Bigdata(width, height);
+				setVisible(false);
+			}
+		});
+		
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Seminarroom(width, height);
+				setVisible(false);
+			}
+		});
+		
 		//AI면접실 버튼 이벤트 메소드
 		btn7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
